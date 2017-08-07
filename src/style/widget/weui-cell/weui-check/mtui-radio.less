@@ -14,30 +14,32 @@
 * limitations under the License.
 */
 
-//primary color
-@primaryColor: #FF8247;
+@import "../../../base/fn";
 
-// color
-@weuiColorPrimary: @primaryColor;
-@weuiColorWarn: #E64340;
+.mtui-cells_radio {
+    .weui-cell__hd {
+        padding-right: @weuiCellInnerGapH;
+    }
+    .mtui-icon-checked {
+        &:before {
+            content: '\F001';
+            color: #C9C9C9;
+            font-size: 23px;
+            display: block;
+        }
+    }
+}
 
-// link
-@weuiLinkColorDefault: #586C94;
-
-// background
-@weuiBgColorDefault: #EFEFF4;
-@weuiBgColorActive: #ECECEC;
-
-// line
-@weuiLineColorLight: #E5E5E5;
-@weuiLineColorDark: #BCBAB6;
-
-// text
-@weuiTextColorTitle: #000000;
-@weuiTextColorTips: #B2B2B2;
-@weuiTextColorWarn: @weuiColorWarn;
-@weuiTextColorGray: #999999;
-
-
-
-
+.weui-check {
+    // radio
+    .mtui-cells_radio & {
+        &:checked {
+            & + .mtui-icon-checked {
+                &:before {
+                    content: '\F002';
+                    color: @primaryColor;
+                }
+            }
+        }
+    }
+}

@@ -6,6 +6,7 @@
     <div class="page__bd page__bd_spacing">
         <a href="javascript:;" class="weui-btn weui-btn_default" id="showToast">成功提示</a>
         <a href="javascript:;" class="weui-btn weui-btn_default" id="showLoadingToast">加载中提示</a>
+        <a href="javascript:;" class="weui-btn weui-btn_default" id="showMsgToast">Message提示</a>
     </div>
     <div class="page__ft">
         <a href="javascript:home()"><img src="./images/icon_footer_link.png" /></a>
@@ -27,6 +28,13 @@
         <div class="weui-toast">
             <i class="weui-loading weui-icon_toast"></i>
             <p class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+
+    <!-- loading toast -->
+    <div id="msgToast" style="display:none;">
+        <div class="weui-toast-msg hide">
+            <p class="weui-toast-msg__content">数据加载中</p>
         </div>
     </div>
 </div>
@@ -53,6 +61,21 @@
             $loadingToast.fadeIn(100);
             setTimeout(function () {
                 $loadingToast.fadeOut(100);
+            }, 2000);
+        });
+    });
+
+    // loading
+    $(function(){
+        var $msgToastContainer = $('#msgToast');
+        $('#showMsgToast').on('click', function(){
+//            if ($msgToast.css('display') != 'none') return;
+            $msgToastContainer.show();
+            var $msgToast = $msgToastContainer.find('.weui-toast-msg');
+
+            $msgToast.addClass('show').removeClass('hide');
+            setTimeout(function () {
+                $msgToast.addClass('hide').removeClass('show');
             }, 2000);
         });
     });
